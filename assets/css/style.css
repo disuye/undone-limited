@@ -141,7 +141,6 @@ footer {
 
 [data-contents="tagline"] {
     font-weight: 900;
-    border: 1px solid red;
     padding-left: 0.6rem; /* offset letter spacing, font dependent */
 }
 
