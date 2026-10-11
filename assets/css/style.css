@@ -71,15 +71,23 @@ main::before {
     background-repeat: no-repeat;
 }
 
-main::after {
-    content: "";
+[data-contents="crt"] {
+    --crt-overscan: 10%;
     position: fixed;
-    inset: 0;
+    top: calc(-1 * var(--crt-overscan));
+    left: calc(-1 * var(--crt-overscan));
+    width: calc(100% + 2 * var(--crt-overscan));
+    height: calc(100% + 2 * var(--crt-overscan));
+    max-width: none;
     z-index: 1;
     pointer-events: none;
     background-image: url("../../assets/img/rgb.png");
     background-size: 10px;
     opacity: 0.15;
+}
+
+[data-contents="crt"][data-gl] {
+    background-image: none;
 }
 
 header {
@@ -89,7 +97,6 @@ header {
     top: 0;
     padding: var(--s-1);
     padding-top: max(var(--s-1), env(safe-area-inset-top));
-
     font-family: condensed, sans-serif;
     font-size: var(--s0);
     text-transform: uppercase;
@@ -103,7 +110,6 @@ footer {
     bottom: 0;
     padding: var(--s-1);
     padding-bottom: max(var(--s-1), env(safe-area-inset-bottom));
-    
     font-family: condensed, sans-serif;
     font-size: var(--s-1);
     text-transform: uppercase;
@@ -116,14 +122,12 @@ footer {
     top: 50%; left: 50%;
     width: min(35rem, 95vw);
     transform: translate(-50%,-50%);
-    /* background-color: rgba(0,0,0,0.20); */
     text-align: center;
     align-content: center;
-
     font-family: condensed, sans-serif;
     font-size: var(--s0);
     text-transform: uppercase;
-    letter-spacing: 0.6rem; 
+    letter-spacing: 0.6rem;
 }
 
 [data-contents="logo"] {
@@ -137,6 +141,8 @@ footer {
 
 [data-contents="tagline"] {
     font-weight: 900;
+    border: 1px solid red;
+    padding-left: 0.6rem; /* offset letter spacing, font dependent */
 }
 
 a {
