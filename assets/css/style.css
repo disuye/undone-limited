@@ -71,6 +71,17 @@ main::before {
     background-repeat: no-repeat;
 }
 
+main::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("../../assets/img/rgb.png");
+    background-size: 8px;
+    opacity: 0.2;
+}
+
 header {
     width: 100%;
     text-align: center;
