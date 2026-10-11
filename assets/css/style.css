@@ -17,7 +17,10 @@
     --bg-ease: linear(0, 0.108, 0.328, 0.555, 0.742, 0.875, 0.959, 1.005, 1.024, 1.028, 1.025, 1.018, 1.012, 1.007, 1.003, 1.001, 1, 0.999, 0.999, 0.999, 1);
     font-style: normal;
     line-height: 1.2rem;
-
+    transition: 
+        transform 300ms ease-in-out, 
+        font-size 300ms ease-in-out, 
+        letter-spacing 300ms ease-in-out;
 }
 
 body {
@@ -134,4 +137,13 @@ a {
 a:hover {
     color: var(--brand);
     background-color: var(--brand-subtle);
+}
+
+@media (width < 35rem) {
+    :root {
+         --base-s: 0.8rem;
+    }    
+    [data-contents="splash"] {
+        letter-spacing: 0.4rem;
+    }
 }
