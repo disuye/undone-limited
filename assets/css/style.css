@@ -71,6 +71,7 @@ header {
     position: fixed;
     top: 0;
     padding: var(--s-1);
+    padding-top: max(var(--s-1), env(safe-area-inset-top));
 
     font-family: condensed, sans-serif;
     font-size: var(--s0);
@@ -84,6 +85,7 @@ footer {
     position: fixed;
     bottom: 0;
     padding: var(--s-1);
+    padding-bottom: max(var(--s-1), env(safe-area-inset-bottom));
     
     font-family: condensed, sans-serif;
     font-size: var(--s-1);
