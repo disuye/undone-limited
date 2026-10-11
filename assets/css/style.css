@@ -33,13 +33,13 @@ body {
 body::before {
     content: "";
     position: fixed;
-    inset: -80px;
     z-index: -1;
     background-image: url("../../assets/img/logo-faint.svg");
     background-size: auto calc(var(--bg-zoom, 3) * 30%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
     background-repeat: no-repeat;
     filter: blur(var(--bg-b, 40px));
+    inset: -80px;
     transition:
         filter var(--bg-trans) var(--bg-ease),
         background-position var(--bg-trans) var(--bg-ease),
@@ -47,18 +47,21 @@ body::before {
     transform: rotate(180deg);    
 }
 
-/* * {
-    border: 1px inset red;
+ main {
+    width: 100vw;
+    height: 100vh;
 }
- */
 
-main {
-    transition:
-        background-position var(--bg-trans) var(--bg-ease),
-        background-size var(--bg-trans) var(--bg-ease);
+main::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,0.4);
+    transition:
+        background-position var(--bg-trans) var(--bg-ease),
+        background-size var(--bg-trans) var(--bg-ease);
     background-image: url("../../assets/img/logo-faint.svg");
     background-size: auto calc(var(--bg-zoom, 3) * 50%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
