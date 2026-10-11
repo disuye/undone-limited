@@ -9,8 +9,8 @@
     --black: rgba(15 15 15 / 1.0);
     /* Sizes */
     --base-s: 1.0rem;
-    --s0: calc(0.8 * var(--base-s));
-    --s-1: calc(0.5 * var(--base-s));
+    --s0: calc(0.7 * var(--base-s));
+    --s-1: calc(0.6 * var(--base-s));
     color: var(--white);
     /* Animation */
     --bg-trans: calc(0.3ms * var(--bg-t, 800));
@@ -78,8 +78,8 @@ main::after {
     z-index: 1;
     pointer-events: none;
     background-image: url("../../assets/img/rgb.png");
-    background-size: 8px;
-    opacity: 0.2;
+    background-size: 10px;
+    opacity: 0.15;
 }
 
 header {
