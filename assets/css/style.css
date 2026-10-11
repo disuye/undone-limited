@@ -13,7 +13,8 @@
     --s-1: calc(0.5 * var(--base-s));
     color: var(--white);
     /* Animation */
-    --bg-trans: calc(0.8ms * var(--bg-t, 800));
+    --bg-trans: calc(0.2ms * var(--bg-t, 800));
+    --bg-ease: steps(60);
     font-style: normal;
     line-height: 1.2rem;
 
@@ -27,6 +28,7 @@ body {
     overflow: hidden;
     text-rendering: optimizeLegibility;
     background-color: rgba(0,0,0,0.9);
+    background-color: black;
 }
 
 body::after {
@@ -38,11 +40,11 @@ body::after {
     background-size: auto calc(var(--bg-zoom, 3) * 30%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
     background-repeat: no-repeat;
-    filter: blur(var(--bg-b));
+    filter: blur(var(--bg-b, 40px));
     transition:
-        filter var(--bg-trans) ease-in-out,
-        background-position var(--bg-trans) ease-in-out,
-        background-size var(--bg-trans) ease-in-out;
+        filter var(--bg-trans) var(--bg-ease),
+        background-position var(--bg-trans) var(--bg-ease),
+        background-size var(--bg-trans) var(--bg-ease);
 }
 
 /* * {
@@ -51,9 +53,9 @@ body::after {
  */
 
 main {
-    transition: 
-    background-position var(--bg-trans) ease-in-out,
-    background-size var(--bg-trans) ease-in-out;
+    transition:
+        background-position var(--bg-trans) var(--bg-ease),
+        background-size var(--bg-trans) var(--bg-ease);
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,0.4);

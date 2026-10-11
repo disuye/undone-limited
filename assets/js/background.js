@@ -9,11 +9,14 @@ const randomiseBackground = () => {
   style.setProperty('--bg-zoom', random(2, 6).toFixed(2));
   style.setProperty('--bg-x', `${random(0, 100).toFixed(1)}%`);
   style.setProperty('--bg-y', `${random(0, 100).toFixed(1)}%`);
-  style.setProperty('--bg-b', `${random(10, 80).toFixed(1)}px`);
+  style.setProperty('--bg-b', `${random(50, 0).toFixed(1)}px`);
 };
+
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lowSpec = navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2;
 
 randomiseBackground();
 
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (!reducedMotion && !lowSpec) {
   setInterval(randomiseBackground, INTERVAL_MS);
 }
