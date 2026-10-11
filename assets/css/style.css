@@ -14,7 +14,7 @@
     color: var(--white);
     /* Animation */
     --bg-trans: calc(0.3ms * var(--bg-t, 800));
-    --bg-ease: steps(60);
+    --bg-ease: linear(0, 0.108, 0.328, 0.555, 0.742, 0.875, 0.959, 1.005, 1.024, 1.028, 1.025, 1.018, 1.012, 1.007, 1.003, 1.001, 1, 0.999, 0.999, 0.999, 1);
     font-style: normal;
     line-height: 1.2rem;
 
