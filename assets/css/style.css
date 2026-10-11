@@ -13,7 +13,7 @@
     --s-1: calc(0.5 * var(--base-s));
     color: var(--white);
     /* Animation */
-    --bg-trans: calc(0.2ms * var(--bg-t, 800));
+    --bg-trans: calc(0.3ms * var(--bg-t, 800));
     --bg-ease: steps(60);
     font-style: normal;
     line-height: 1.2rem;
