@@ -45,6 +45,7 @@ body::after {
         filter var(--bg-trans) var(--bg-ease),
         background-position var(--bg-trans) var(--bg-ease),
         background-size var(--bg-trans) var(--bg-ease);
+    transform: rotate(180deg);    
 }
 
 /* * {
