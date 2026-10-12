@@ -37,7 +37,7 @@ body::before {
     content: "";
     position: fixed;
     z-index: -1;
-    background-image: url("../../assets/img/logo-faint.svg");
+    background-image: url("../../assets/img/logo4-faint.svg");
     background-size: auto calc(var(--bg-zoom, 3) * 30%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
     background-repeat: no-repeat;
@@ -65,7 +65,7 @@ main::before {
     transition:
         background-position var(--bg-trans) var(--bg-ease),
         background-size var(--bg-trans) var(--bg-ease);
-    background-image: url("../../assets/img/logo-faint.svg");
+    background-image: url("../../assets/img/logo4-faint.svg");
     background-size: auto calc(var(--bg-zoom, 3) * 50%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
     background-repeat: no-repeat;
@@ -129,10 +129,10 @@ footer {
 }
 
 [data-contents="logo"] {
-    aspect-ratio: 7 / 1;
-    background-image: url("../../assets/img/logo.svg");
+    aspect-ratio: 11 / 1;
+    background-image: url("../../assets/img/logo4.svg");
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: var(--s0); 
 }
