@@ -81,8 +81,6 @@ main::before {
     max-width: none;
     z-index: 1;
     pointer-events: none;
-    background-image: url("../../assets/img/rgb.png");
-    background-size: 10px;
     opacity: 0.15;
 }
 

@@ -1,6 +1,5 @@
 const TILE_PX = 10;
-const BULGE = -0.05;
-const ABERRATION = 0.012;
+const BULGE = -0.1;
 const TEXTURE_SRC = 'assets/img/rgb.png';
 
 const VERTEX = `
@@ -14,22 +13,17 @@ const FRAGMENT = `
   uniform vec2 u_res;
   uniform float u_tile;
   uniform float u_bulge;
-  uniform float u_aberration;
-
-  vec4 sampleAt(vec2 c) {
-    vec2 uv = (c + 1.0) * 0.5;
-    if (any(lessThan(uv, vec2(0.0))) || any(greaterThan(uv, vec2(1.0)))) return vec4(0.0);
-    return texture2D(u_tex, fract(uv * u_res / u_tile));
-  }
 
   void main() {
     vec2 c = gl_FragCoord.xy / u_res * 2.0 - 1.0;
     c *= 1.0 + u_bulge * dot(c, c);
+    vec2 uv = (c + 1.0) * 0.5;
 
-    vec4 r = sampleAt(c * (1.0 + u_aberration));
-    vec4 g = sampleAt(c);
-    vec4 b = sampleAt(c * (1.0 - u_aberration));
-    gl_FragColor = vec4(r.r, g.g, b.b, max(max(r.a, g.a), b.a));
+    if (any(lessThan(uv, vec2(0.0))) || any(greaterThan(uv, vec2(1.0)))) {
+      gl_FragColor = vec4(0.0);
+      return;
+    }
+    gl_FragColor = texture2D(u_tex, fract((uv - 0.5) * u_res / u_tile + 0.5));
   }
 `;
 
@@ -82,7 +76,7 @@ const initCrt = async (canvas) => {
   gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
   const uniform = (name) => gl.getUniformLocation(program, name);
-  const [uRes, uTile, uBulge, uAberration] = ['u_res', 'u_tile', 'u_bulge', 'u_aberration'].map(uniform);
+  const [uRes, uTile, uBulge] = ['u_res', 'u_tile', 'u_bulge'].map(uniform);
 
   const render = () => {
     const dpr = devicePixelRatio || 1;
@@ -92,7 +86,6 @@ const initCrt = async (canvas) => {
     gl.uniform2f(uRes, canvas.width, canvas.height);
     gl.uniform1f(uTile, TILE_PX * dpr);
     gl.uniform1f(uBulge, BULGE);
-    gl.uniform1f(uAberration, ABERRATION);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
