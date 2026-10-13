@@ -1,0 +1,191 @@
+:root {
+    /* Brand colors */
+    --brand-rgb: 253 253 13;
+    --brand: rgba(var(--brand-rgb) / 1.0);
+    --brand-fade: rgba(var(--brand-rgb) / 0.7);
+    --brand-subtle: rgba(var(--brand-rgb) / 0.7);
+    /* Structural colors */
+    --white: rgba(252 252 255 / 1.0);
+    --black: rgba(15 15 15 / 1.0);
+    /* Sizes */
+    --base-s: 1.2rem;
+    --s2: calc(1.15 * var(--base-s));
+    --s1: calc(1.0 * var(--base-s));
+    --s0: calc(0.85 * var(--base-s));
+    --s-1: calc(0.72 * var(--base-s));
+    --s-2: calc(0.6 * var(--base-s));
+    color: var(--white);
+    /* Animation */
+    --bg-trans: calc(0.3ms * var(--bg-t, 800));
+    --bg-ease: linear(0, 0.108, 0.328, 0.555, 0.742, 0.875, 0.959, 1.005, 1.024, 1.028, 1.025, 1.018, 1.012, 1.007, 1.003, 1.001, 1, 0.999, 0.999, 0.999, 1);
+    font-style: normal;
+    line-height: 1.2rem;
+    font-size: var(--s0);
+    transition: 
+        transform 300ms ease-in-out, 
+        font-size 300ms ease-in-out, 
+        letter-spacing 300ms ease-in-out;
+    font-family: condensed, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    text-rendering: optimizeLegibility;
+    background-color: var(--black);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    background-image: url("../../assets/img/logo4-faint.svg");
+    background-size: auto calc(var(--bg-zoom, 3) * 30%);
+    background-position: var(--bg-x, 50%) var(--bg-y, 50%);
+    background-repeat: no-repeat;
+    filter: blur(var(--bg-b, 40px));
+    inset: -80px;
+    transition:
+        filter var(--bg-trans) var(--bg-ease),
+        background-position var(--bg-trans) var(--bg-ease),
+        background-size var(--bg-trans) var(--bg-ease);
+    transform: rotate(180deg);    
+}
+
+ main {
+    width: 100vw;
+    height: 100vh;
+}
+
+main::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    transition:
+        background-position var(--bg-trans) var(--bg-ease),
+        background-size var(--bg-trans) var(--bg-ease);
+    background-image: url("../../assets/img/logo4-faint.svg");
+    background-size: auto calc(var(--bg-zoom, 3) * 50%);
+    background-position: var(--bg-x, 50%) var(--bg-y, 50%);
+    background-repeat: no-repeat;
+}
+
+[data-contents="crt"] {
+    --crt-overscan: 10%;
+    position: fixed;
+    top: calc(-1 * var(--crt-overscan));
+    left: calc(-1 * var(--crt-overscan));
+    width: calc(100% + 2 * var(--crt-overscan));
+    height: calc(100% + 2 * var(--crt-overscan));
+    max-width: none;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.2;
+}
+
+[data-contents="crt"][data-gl] {
+    background-image: none;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    padding: var(--s-1);
+    padding-top: max(var(--s-1), env(safe-area-inset-top));
+    font-size: var(--s2);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem; 
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    padding: var(--s-1);
+    padding-bottom: max(var(--s-1), env(safe-area-inset-bottom));
+    font-size: var(--s-2);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem; 
+}
+
+[data-contents="splash"] {
+    display: block; 
+    position: absolute; 
+    top: 50%; left: 50%;
+    width: min(35rem, 95vw);
+    transform: translate(-50%,-50%);
+    text-align: center;
+    align-content: center;
+}
+
+[data-contents="logo"] {
+    position: relative;
+    aspect-ratio: 11 / 1;
+    margin: var(--s0);
+}
+
+[data-contents="logo"]::before,
+[data-contents="logo"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: center / contain no-repeat;
+    transition: opacity 300ms ease-in-out, filter 1200ms ease-in-out;
+}
+
+[data-contents="logo"]::before {
+    background-image: url("../../assets/img/logo4.svg");
+}
+
+[data-contents="logo"]::after {
+    background-image: url("../../assets/img/undone.svg");
+    opacity: 0;
+}
+
+[data-contents="logo"]:hover::before {
+    opacity: 0;
+    filter: blur(10px);
+}
+
+[data-contents="logo"]:hover::after {
+    opacity: 1;
+}
+
+[data-contents="tagline"] {
+    font-family: condensed, sans-serif;
+    font-size: var(--s-1);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.6rem;
+    text-indent: 0.6rem; /* offset letter spacing, font dependent */
+}
+
+a {
+    text-decoration: none; 
+    color: var(--white);
+    background-color: transparent;
+}		
+
+a:hover {
+    color: var(--brand);
+    background-color: var(--brand-subtle);
+}
+
+@media (width < 35rem) {
+    :root {
+         --base-s: 0.8rem;
+    }    
+    [data-contents="splash"] {
+        letter-spacing: 0.4rem;
+    }
+}
