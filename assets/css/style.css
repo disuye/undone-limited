@@ -1,5 +1,5 @@
 :root {
-    /* Brand colors */
+    /* Brand colors #FDFD0D */
     --brand-rgb: 253 253 13;
     --brand: rgba(var(--brand-rgb) / 1.0);
     --brand-fade: rgba(var(--brand-rgb) / 0.7);
@@ -82,7 +82,7 @@ header,
 }
 
 img {
-    display: block;
+    display: none;
     position: relative;
     z-index: -5;
     top: 50%; left: 50%;
@@ -163,7 +163,7 @@ footer {
 }
 
 [data-contents="logo"]::after {
-    background: #FDFD0D;
+    background: var(--brand-rgb);
     mask: url("../../assets/img/undone.svg") center / contain no-repeat;
     opacity: 0;
 }
