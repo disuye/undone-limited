@@ -41,7 +41,7 @@ body {
 body::before {
     content: "";
     position: fixed;
-    z-index: -1;
+    z-index: -10;
     background-image: url("../../assets/img/logo4-faint.svg");
     background-size: auto calc(var(--bg-zoom, 3) * 30%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
@@ -55,7 +55,7 @@ body::before {
     transform: rotate(180deg);    
 }
 
- main {
+main {
     width: 100vw;
     height: 100vh;
 }
@@ -74,6 +74,22 @@ main::before {
     background-size: auto calc(var(--bg-zoom, 3) * 50%);
     background-position: var(--bg-x, 50%) var(--bg-y, 50%);
     background-repeat: no-repeat;
+}
+
+header,
+[data-contents="page"] {
+    display: none;
+}
+
+img {
+    display: block;
+    position: relative;
+    z-index: -5;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    align-content: center;
+    border-radius: 100%;
 }
 
 [data-contents="crt"] {
