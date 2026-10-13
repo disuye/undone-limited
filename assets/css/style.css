@@ -163,7 +163,7 @@ footer {
 }
 
 [data-contents="logo"]::after {
-    background: var(--brand-rgb);
+    background: var(--brand);
     mask: url("../../assets/img/undone.svg") center / contain no-repeat;
     opacity: 0;
 }
