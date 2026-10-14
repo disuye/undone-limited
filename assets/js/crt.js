@@ -1,5 +1,5 @@
 const TILE_PX = 10;
-const BULGE = -0.1;
+const BULGE = -0.2;
 const TEXTURE_SRC = 'assets/img/rgb.png';
 
 const VERTEX = `
