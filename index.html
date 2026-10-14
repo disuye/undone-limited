@@ -34,21 +34,15 @@
 		<script src="assets/js/crt.js" defer></script>
 	</head>
 	<body>
-		<header>
+		<header data-contents="layout">
 			<!-- <div data-contents="nav-open">☰</div>
 			<nav data-contents="nav">
 				<div data-contents="nav-close">×</div>
-				Link 1
-				Link 2
-				Link 3
-				Link 4
-				Link 5
 			</nav> -->
 		</header>
 		<main>
 <!------------------------>
 			<div data-contents="splash">
-				<!-- welcome splash logo -->
 				<div data-contents="logo"></div>
 				<div data-contents="tagline">
 					Research & Development
@@ -59,9 +53,9 @@
 			<!-- <div data-contents="page">
 				<header></header>
 					<figure>
-						<div data-contents="hero-image"> -->
-							<!-- full width image, with image credit overlay -->
-						<!-- </div>
+						<div data-contents="hero-image">
+							<img src="../../assets/img/anon.jpg">
+						</div>
 					</figure>
 					<article>
 						<h1>Header</h1>
@@ -76,9 +70,19 @@
 				<footer></footer>
 			</div> -->
 <!------------------------>
-			<!-- RGB CRT screen overlay effects -->
 			<canvas data-contents="crt" aria-hidden="true"></canvas>
 		</main>
-		<footer>&copy;2026 Undone Ltd · Hong Kong · 混亂 香港</footer>
+		<footer data-contents="layout">
+			&copy;2026 Undone Ltd · HK · 混亂 香港
+
+			<a href="#" id="em" data-u="info" data-d="undone-ltd.com"
+				onmouseover="this.href='mailto:'+this.dataset.u+'@'+this.dataset.d"
+				ontouchstart="this.href='mailto:'+this.dataset.u+'@'+this.dataset.d"
+				onfocus="this.href='mailto:'+this.dataset.u+'@'+this.dataset.d">Email</a>
+
+			<a href="">About</a>
+			<a href="">Login</a>
+
+		</footer>
 	</body>
 </html>

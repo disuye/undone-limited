@@ -1,6 +1,6 @@
 :root {
-    /* Brand colors #FDFD0D */
-    --brand-rgb: 253 253 13;
+    /* Brand colors #FDFD0D 253 253 13 */
+    --brand-rgb: 253 253 13 ;
     --brand: rgba(var(--brand-rgb) / 1.0);
     --brand-fade: rgba(var(--brand-rgb) / 0.7);
     --brand-subtle: rgba(var(--brand-rgb) / 0.3);
@@ -9,6 +9,7 @@
     --base1: rgba(15 15 15 / 1.0);
     --base2-subtle: rgba(252 252 255 / 0.3);
     --base1-subtle: rgba(15 15 15 / 0.3);
+    --smoke-solid: rgba(52 61 68 / 1.0);
     --smoke: rgba(52 61 68 / 0.3);
     /* Sizes */
     --base-s: 1.2rem;
@@ -41,8 +42,19 @@ body {
     overflow: hidden;
     text-rendering: optimizeLegibility;
     background-color: var(--base2);
-
 }
+
+main {
+    width: 100vw;
+    height: 100vh;
+}
+
+/*==============================
+
+Splash animation...
+
+===============================*/
+
 
 body::before {
     content: "";
@@ -50,7 +62,6 @@ body::before {
     inset: 0;
     z-index: -10;
     background-color: var(--smoke);
-    /* background: url("../img/anon.jpg") center / cover no-repeat; */
     mask: url("../../assets/img/logo4.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 30%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
@@ -71,10 +82,6 @@ body::after {
     transition: backdrop-filter var(--bg-trans) var(--bg-ease);
 }
 
-main {
-    width: 100vw;
-    height: 100vh;
-}
 
 main::before {
     content: "";
@@ -82,29 +89,12 @@ main::before {
     inset: 0;
     z-index: -1;
     background-color: var(--smoke);
-    /* background: url("../img/anon.jpg") center / cover no-repeat; */
     mask: url("../../assets/img/logo4.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 50%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
     transition:
         mask-position var(--bg-trans) var(--bg-ease),
         mask-size var(--bg-trans) var(--bg-ease);
-}
-
-header,
-[data-contents="page"] {
-    display: none;
-}
-
-img {
-    display: none;
-    position: relative;
-    z-index: -5;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    align-content: center;
-    border-radius: 100%;
 }
 
 [data-contents="crt"] {
@@ -115,7 +105,7 @@ img {
     width: calc(100% + 2 * var(--crt-overscan));
     height: calc(100% + 2 * var(--crt-overscan));
     max-width: none;
-    z-index: 100;
+    z-index: -1;
     pointer-events: none;
     opacity: 0.65;
     mix-blend-mode: color;
@@ -123,30 +113,6 @@ img {
 
 [data-contents="crt"][data-gl] {
     background-image: none;
-}
-
-header,
-footer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s0);
-    background-color: var(--base2-subtle);
-    width: 100%;
-    position: fixed;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    padding: var(--s-2);
-}
-
-header {
-    top: 0;
-    font-size: var(--s-2);
-}
-
-footer {
-    bottom: 0;
-    font-size: var(--s-2);
 }
 
 [data-contents="splash"] {
@@ -158,7 +124,7 @@ footer {
     width: min(35rem, 95vw);
     text-align: center;
     align-content: center;
-    transform: translate(-50%, -50%) perspective(0px) rotateY(0deg);
+    transform: translate(-50%, -50%) perspective(30px) rotateZ(70deg) rotateY(3deg);
     transform-origin: center; 
 }
 
@@ -173,11 +139,11 @@ footer {
     position: absolute;
     inset: 0;
     background: center / contain no-repeat;
-    transition: opacity 300ms ease-in-out, filter 1200ms ease-in-out;
+    transition: opacity 300ms ease-in-out, transform 120ms ease-in-out, filter 1200ms ease-in-out;
 }
 
 [data-contents="logo"]::before {
-    background: var(--brand);
+    background: var(--smoke);
     mask: url("../../assets/img/logo4.svg") center / contain no-repeat;
 }
 
@@ -189,14 +155,14 @@ footer {
 
 [data-contents="logo"]:hover::before {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(20px);
 }
 
 [data-contents="logo"]:hover::after {
     opacity: 1;
 }
 
-/* touch screens: 4s hold, 300ms fade, alternating */
+/* touch screen splash logo animation */
 @media (hover: none) and (pointer: coarse) and (prefers-reduced-motion: no-preference) {
     [data-contents="logo"]::before {
         animation: logo-out 12s ease-in-out infinite;
@@ -209,14 +175,14 @@ footer {
 
 @keyframes logo-out {
     0%, 40%  { opacity: 1; filter: blur(0); }
-    50%, 90% { opacity: 0; filter: blur(10px); }
-    100%       { opacity: 1; filter: blur(0); }
+    50%, 90% { opacity: 0; filter: blur(20px); }
+    100%     { opacity: 1; filter: blur(0); }
 }
 
 @keyframes logo-in {
     0%, 40%  { opacity: 0; }
     50%, 90% { opacity: 1; }
-    100%       { opacity: 0; }
+    100%     { opacity: 0; }
 }
 
 [data-contents="tagline"] {
@@ -225,7 +191,61 @@ footer {
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 0.6rem;
-    text-indent: 0.6rem; /* offset letter spacing, font dependent */    vertical-align: middle;
+    text-indent: 0.6rem; /* offset letter spacing, font dependent */   
+    vertical-align: middle;
+    transform: rotateZ(-90deg);
+}
+
+/*==============================
+
+Main site layout and styling...
+
+===============================*/
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+}
+
+[data-contents="layout"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--s0);
+    width: 100%;
+    min-height: calc(2 * var(--base-s));
+    position: fixed;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: var(--s-2);
+    font-size: var(--s-2);
+    z-index: 10;
+} 
+
+[data-contents="page"] {
+    display: flex;
+    flex-direction: row;
+    gap: var(--s0);
+    z-index: 10;
+    width: min(35rem, 100vdh);
+    margin: 0 auto;
+}
+
+[div-contents="hero-image"] {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin: auto;
+}
+
+img {
+    display: flex;
+    width: 100%;
 }
 
 a {
@@ -238,6 +258,14 @@ a:hover {
     color: var(--brand);
     background-color: var(--brand-subtle);
 }
+
+
+
+/*==============================
+
+Responsive quirks...
+
+===============================*/
 
 @media (width < 35rem) {
     :root {
