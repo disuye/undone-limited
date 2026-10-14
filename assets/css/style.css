@@ -9,6 +9,7 @@
     --base1: rgba(15 15 15 / 1.0);
     --base2-subtle: rgba(252 252 255 / 0.3);
     --base1-subtle: rgba(15 15 15 / 0.3);
+    --smoke: rgba(52 61 68 / 0.3);
     /* Sizes */
     --base-s: 1.2rem;
     --s2: calc(1.15 * var(--base-s));
@@ -16,18 +17,20 @@
     --s0: calc(0.85 * var(--base-s));
     --s-1: calc(0.72 * var(--base-s));
     --s-2: calc(0.6 * var(--base-s));
+    --gap: var(--s0);
+    /* Typography */
+    font-family: condensed, sans-serif;
+    line-height: var(--base-s);
+    font-size: var(--s0);
     color: var(--base1);
+    font-style: normal;
     /* Animation */
     --bg-trans: calc(0.3ms * var(--bg-t, 800));
     --bg-ease: linear(0, 0.108, 0.328, 0.555, 0.742, 0.875, 0.959, 1.005, 1.024, 1.028, 1.025, 1.018, 1.012, 1.007, 1.003, 1.001, 1, 0.999, 0.999, 0.999, 1);
-    font-style: normal;
-    line-height: 1.2rem;
-    font-size: var(--s0);
     transition: 
         transform 300ms ease-in-out, 
         font-size 300ms ease-in-out, 
         letter-spacing 300ms ease-in-out;
-    font-family: condensed, sans-serif;
 }
 
 body {
@@ -38,23 +41,34 @@ body {
     overflow: hidden;
     text-rendering: optimizeLegibility;
     background-color: var(--base2);
+
 }
 
 body::before {
     content: "";
     position: fixed;
+    inset: 0;
     z-index: -10;
-    background-image: url("../../assets/img/logo4-faint.svg");
-    background-size: auto calc(var(--bg-zoom, 3) * 30%);
-    background-position: var(--bg-x, 50%) var(--bg-y, 50%);
-    background-repeat: no-repeat;
-    filter: blur(var(--bg-b, 40px));
-    inset: -80px;
+    background-color: var(--smoke);
+    /* background: url("../img/anon.jpg") center / cover no-repeat; */
+    mask: url("../../assets/img/logo4.svg") no-repeat;
+    mask-size: auto calc(var(--bg-zoom, 3) * 30%);
+    mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
+    transform: rotate(180deg);
     transition:
-        filter var(--bg-trans) var(--bg-ease),
-        background-position var(--bg-trans) var(--bg-ease),
-        background-size var(--bg-trans) var(--bg-ease);
-    transform: rotate(180deg);    
+        mask-position var(--bg-trans) var(--bg-ease),
+        mask-size var(--bg-trans) var(--bg-ease);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(var(--bg-b, 40px));
+    backdrop-filter: blur(var(--bg-b, 40px));
+    transition: backdrop-filter var(--bg-trans) var(--bg-ease);
 }
 
 main {
@@ -65,17 +79,16 @@ main {
 main::before {
     content: "";
     position: fixed;
+    inset: 0;
     z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.0);
+    background-color: var(--smoke);
+    /* background: url("../img/anon.jpg") center / cover no-repeat; */
+    mask: url("../../assets/img/logo4.svg") no-repeat;
+    mask-size: auto calc(var(--bg-zoom, 3) * 50%);
+    mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
     transition:
-        background-position var(--bg-trans) var(--bg-ease),
-        background-size var(--bg-trans) var(--bg-ease);
-    background-image: url("../../assets/img/logo4-faint.svg");
-    background-size: auto calc(var(--bg-zoom, 3) * 50%);
-    background-position: var(--bg-x, 50%) var(--bg-y, 50%);
-    background-repeat: no-repeat;
+        mask-position var(--bg-trans) var(--bg-ease),
+        mask-size var(--bg-trans) var(--bg-ease);
 }
 
 header,
@@ -104,7 +117,7 @@ img {
     max-width: none;
     z-index: 100;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.65;
     mix-blend-mode: color;
 }
 
@@ -114,43 +127,37 @@ img {
 
 header,
 footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s0);
     background-color: var(--base2-subtle);
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: var(--s-2);
 }
 
 header {
-    width: 100%;
-    text-align: center;
-    position: fixed;
     top: 0;
-    padding: var(--s-1);
-    padding-top: max(var(--s-1), env(safe-area-inset-top));
-    font-size: var(--s2);
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    font-size: var(--s-2);
 }
 
 footer {
-    width: 100%;
-    text-align: center;
-    position: fixed;
     bottom: 0;
-    padding: var(--s-1);
-    padding-bottom: max(var(--s-1), env(safe-area-inset-bottom));
     font-size: var(--s-2);
-    text-transform: uppercase;
-    letter-spacing: 0.1rem; 
 }
 
 [data-contents="splash"] {
-    display: block; 
+    display: flex;
+    flex-direction: column;
+    gap: var(--s0); 
     position: absolute; 
     top: 50%; left: 50%;
     width: min(35rem, 95vw);
     text-align: center;
     align-content: center;
-    background-color: var(--brand);
-    padding: var(--s0);
-    border-radius: 0.07rem;
     transform: translate(-50%, -50%) perspective(0px) rotateY(0deg);
     transform-origin: center; 
 }
@@ -158,7 +165,6 @@ footer {
 [data-contents="logo"] {
     position: relative;
     aspect-ratio: 11 / 1;
-    margin: var(--s0);
 }
 
 [data-contents="logo"]::before,
@@ -171,7 +177,7 @@ footer {
 }
 
 [data-contents="logo"]::before {
-    background: var(--base1);
+    background: var(--brand);
     mask: url("../../assets/img/logo4.svg") center / contain no-repeat;
 }
 
@@ -219,7 +225,7 @@ footer {
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 0.6rem;
-    text-indent: 0.6rem; /* offset letter spacing, font dependent */
+    text-indent: 0.6rem; /* offset letter spacing, font dependent */    vertical-align: middle;
 }
 
 a {
@@ -235,9 +241,6 @@ a:hover {
 
 @media (width < 35rem) {
     :root {
-         --base-s: 0.8rem;
+         --base-s: 1.0rem;
     }    
-    [data-contents="splash"] {
-        letter-spacing: 0.4rem;
-    }
 }
