@@ -7,9 +7,6 @@
     /* Structural colors */
     --base2: rgba(252 252 255 / 1.0);
     --base1: rgba(15 15 15 / 1.0);
-    --base2-subtle: rgba(252 252 255 / 0.3);
-    --base1-subtle: rgba(15 15 15 / 0.3);
-    --smoke-solid: rgba(52 61 68 / 1.0);
     --smoke: rgba(52 61 68 / 0.3);
     /* Sizes */
     --base-s: 1.2rem;
@@ -105,7 +102,7 @@ main::before {
     width: calc(100% + 2 * var(--crt-overscan));
     height: calc(100% + 2 * var(--crt-overscan));
     max-width: none;
-    z-index: -1;
+    z-index: 100;
     pointer-events: none;
     opacity: 0.65;
     mix-blend-mode: color;
@@ -210,7 +207,9 @@ footer {
     bottom: 0;
 }
 
+
 [data-contents="layout"] {
+    text-transform: uppercase;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -220,7 +219,6 @@ footer {
     min-height: calc(2 * var(--base-s));
     position: fixed;
     text-align: center;
-    text-transform: uppercase;
     letter-spacing: 0.1rem;
     padding: var(--s-2);
     font-size: var(--s-2);
@@ -255,8 +253,8 @@ a {
 }		
 
 a:hover {
-    color: var(--brand);
-    background-color: var(--brand-subtle);
+    color: var(--base1);
+    background-color: var(--brand);
 }
 
 
