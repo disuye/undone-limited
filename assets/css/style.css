@@ -5,8 +5,8 @@
     --brand-fade: rgba(var(--brand-rgb) / 0.7);
     --brand-subtle: rgba(var(--brand-rgb) / 0.3);
     /* Structural colors */
-    --base1: rgba(252 252 255 / 1.0);
-    --base2: rgba(15 15 15 / 1.0);
+    --base2: rgba(252 252 255 / 1.0);
+    --base1: rgba(15 15 15 / 1.0);
     --smoke: rgba(52 61 68 / 0.3);
     /* Sizes */
     --base-s: 1.2rem;
@@ -104,7 +104,7 @@ main::before {
     max-width: none;
     z-index: 100;
     pointer-events: none;
-    opacity: 0.27;
+    opacity: 0.17;
     mix-blend-mode: color-dodge;
 }
 
@@ -113,16 +113,19 @@ main::before {
 }
 
 [data-contents="splash"] {
+    --splash-angle: clamp(15deg, atan2(100dvh, 100dvw), 70deg);
     display: flex;
     flex-direction: column;
-    gap: var(--s0); 
-    position: absolute; 
+    gap: var(--s0);
+    position: absolute;
     top: 50%; left: 50%;
     width: min(35rem, 95vw);
+    /* width: min(35rem, calc(hypot(100dvw, 100dvh) * 0.8)); */
     text-align: center;
     align-content: center;
     transform: translate(-50%, -50%) perspective(30px) rotateZ(70deg) rotateY(3deg);
-    transform-origin: center; 
+    transform: translate(-50%, -50%) perspective(30px) rotateZ(var(--splash-angle)) rotateY(3deg);
+    transform-origin: center;
 }
 
 [data-contents="logo"] {
