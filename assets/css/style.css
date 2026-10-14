@@ -104,8 +104,8 @@ main::before {
     max-width: none;
     z-index: 100;
     pointer-events: none;
-    opacity: 0.65;
-    mix-blend-mode: color;
+    opacity: 0.15;
+    mix-blend-mode: color-dodge;
 }
 
 [data-contents="crt"][data-gl] {
