@@ -31,5 +31,31 @@ const lockViewportHeight = () => {
   measure();
 };
 
+const fitHeadline = (headline) => {
+  const lines = [...headline.children];
+  let fit = 1;
+  let lastWidth = 0;
+
+  const naturalWidth = (line) => {
+    const indent = parseFloat(getComputedStyle(line).paddingLeft);
+    return { indent, text: (line.offsetWidth - indent) / fit };
+  };
+
+  const apply = () => {
+    const available = headline.clientWidth;
+    fit = Math.min(1, ...lines.map(naturalWidth).map(({ indent, text }) => (available - indent) / text));
+    headline.style.setProperty('--fit', fit.toFixed(4));
+  };
+
+  new ResizeObserver(([entry]) => {
+    if (entry.contentRect.width === lastWidth) return;
+    lastWidth = entry.contentRect.width;
+    apply();
+  }).observe(headline);
+
+  document.fonts.ready.then(apply);
+};
+
 document.querySelectorAll('a[data-u][data-d]').forEach(revealMailto);
+document.querySelectorAll('[data-contents="split-headline"]').forEach(fitHeadline);
 lockViewportHeight();

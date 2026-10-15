@@ -5,6 +5,20 @@ Fonts (self-hosted, Fontshare / ITF Free Font License)
 ===============================*/
 
 @font-face {
+    font-family: "Futura Display";
+    src: local("Futura-Medium"), url("../fonts/Futura-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Futura Display";
+    src: local("Futura-Bold"), url("../fonts/Futura-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Clash Grotesk";
     src: url("../fonts/ClashGrotesk-Medium.woff2") format("woff2");
     font-weight: 500;
@@ -95,7 +109,7 @@ Tokens
     --underline: calc(var(--rule) * 2);
 
     /* Typography */
-    --font-display: "Clash Grotesk", "Helvetica Neue", sans-serif;
+    --font-display: "Futura Display", "Clash Grotesk", "Helvetica Neue", sans-serif;
     --font-body: "General Sans", "Helvetica Neue", sans-serif;
     --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
     --lh-split: 0.75;
@@ -149,6 +163,7 @@ html {
     font-size: 100%;
     line-height: var(--lh-body);
     text-rendering: optimizeLegibility;
+    scroll-padding-top: var(--nav-h);
 }
 
 body {
@@ -344,6 +359,7 @@ Hero
     background-color: var(--c-ink);
     color: var(--c-paper);
     overflow: hidden;
+    margin-bottom: var(--sp-6);
 }
 
 [data-contents="hero-image"] {
@@ -360,16 +376,21 @@ Hero
 
 [data-contents="hero-content"] {
     position: relative;
+    min-width: 0;
 }
 
 [data-contents="split-headline"] {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: var(--fs-hero);
+    font-size: calc(var(--fs-hero) * var(--fit, 1));
     line-height: var(--lh-split);
     letter-spacing: var(--track-split);
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+[data-contents="split-headline"] > * {
+    width: fit-content;
 }
 
 [data-contents="split-headline"] > :nth-child(2) {
@@ -457,7 +478,7 @@ Manifesto
 }
 
 [data-contents="highlight"] {
-    color: var(--c-deep);
+    color: var(--c-accent);
 }
 
 /*==============================
@@ -602,7 +623,7 @@ Footer
 
 [data-contents="newsletter"] {
     padding: var(--sp-4);
-    background-color: var(--c-ink);
+    background-color: var(--c-accent);
     color: var(--c-paper);
 }
 
