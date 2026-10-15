@@ -1,55 +1,20 @@
 /*==============================
 
-Fonts (self-hosted, Fontshare / ITF Free Font License)
+Fonts (self-hosted, SIL Open Font License)
 
 ===============================*/
 
 @font-face {
-    font-family: "Futura Display";
-    src: local("Futura-Medium"), url("../fonts/Futura-Medium.woff2") format("woff2");
-    font-weight: 500;
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-Variable-latin.woff2") format("woff2");
+    font-weight: 300 900;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Futura Display";
-    src: local("Futura-Bold"), url("../fonts/Futura-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Clash Grotesk";
-    src: url("../fonts/ClashGrotesk-Medium.woff2") format("woff2");
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Clash Grotesk";
-    src: url("../fonts/ClashGrotesk-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src: url("../fonts/GeneralSans-Regular.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src: url("../fonts/GeneralSans-Medium.woff2") format("woff2");
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src: url("../fonts/GeneralSans-Bold.woff2") format("woff2");
-    font-weight: 700;
+    font-family: "Inter";
+    src: url("../fonts/Inter-Variable-latin.woff2") format("woff2");
+    font-weight: 100 900;
     font-display: swap;
 }
 
@@ -73,7 +38,6 @@ Tokens
     --c-accent: rgb(var(--accent-rgb));
     --c-neon: rgb(var(--neon-rgb));
     --c-deep: rgb(var(--deep-rgb));
-    --c-rule: rgb(var(--rule-rgb));
     --c-muted: rgb(var(--paper-rgb) / 0.5);
     --smoke: rgb(var(--deep-rgb) / 0.2);
 
@@ -100,7 +64,7 @@ Tokens
     --fs-hero: 13.5vw;
     --fs-divider: 12vw;
     --indent-hero: 20vw;
-    --indent-text: calc(var(--unit) * 3);
+    --indent-text: calc(var(--unit) * 2);
 
     --gutter: var(--sp-4);
     --nav-h: var(--sp-5);
@@ -109,14 +73,14 @@ Tokens
     --underline: calc(var(--rule) * 2);
 
     /* Typography */
-    --font-display: "Futura Display", "Clash Grotesk", "Helvetica Neue", sans-serif;
-    --font-body: "General Sans", "Helvetica Neue", sans-serif;
+    --font-display: "Rubik", "Helvetica Neue", sans-serif;
+    --font-body: "Inter", "Helvetica Neue", sans-serif;
     --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
     --lh-split: 0.75;
     --lh-display: 0.85;
     --lh-body: 1.5;
     --track-split: -0.05em;
-    --track-display: -0.04em;
+    --track-display: -0.05em;
     --track-wide: 0.1em;
 
     /* Motion */
@@ -290,7 +254,7 @@ Navigation
 
 [data-contents="brand"] {
     justify-self: start;
-    height: var(--fs-2);
+    height: var(--fs-1);
     aspect-ratio: 441 / 102;
     background-color: currentColor;
     mask: url("../img/logo5.svg") left center / contain no-repeat;
@@ -445,10 +409,10 @@ Manifesto
 
 ===============================*/
 
-[data-contents="intro"] {
+[data-contents="dialog"] {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: var(--sp-4) var(--gutter);
+    gap: var(--sp-5) var(--gutter);
     padding: var(--sp-6) var(--gutter);
 }
 
@@ -466,9 +430,9 @@ Manifesto
 [data-contents="statement"] {
     grid-column: 5 / -1;
     font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(var(--fs-3), 3.2vw, var(--fs-5));
-    line-height: 1.05;
+    font-weight: 300;
+    font-size: clamp(var(--fs-2), 3.2vw, var(--fs-4));
+    line-height: 1.25;
     text-transform: uppercase;
     text-indent: var(--indent-text);
 }
@@ -479,6 +443,15 @@ Manifesto
 
 [data-contents="highlight"] {
     color: var(--c-accent);
+}
+
+[data-contents="undone-text-logo"] {
+    display: inline-block;
+    height: 1cap;
+    aspect-ratio: 441 / 102;
+    margin: 0;
+    background-color: currentColor;
+    mask: url("../img/logo5.svg") center / contain no-repeat;
 }
 
 /*==============================
@@ -497,7 +470,7 @@ Category divider
     padding-inline: var(--gutter);
     color: var(--c-deep);
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 900;
     font-size: var(--fs-divider);
     line-height: var(--lh-display);
     letter-spacing: var(--track-display);
@@ -671,7 +644,7 @@ Footer
     background-color: var(--c-paper);
 }
 
-[data-contents="ghost"] {
+[data-contents="large-logo"] {
     grid-column: 1 / -1;
     width: 100%;
     aspect-ratio: 441 / 102;
@@ -679,7 +652,7 @@ Footer
     mask: url("../img/logo5.svg") center / contain no-repeat;
 }
 
-[data-contents="legal"] {
+[data-contents="copyright"] {
     grid-column: 1 / -1;
     display: flex;
     flex-wrap: wrap;
@@ -713,7 +686,7 @@ Breakpoints: mobile < 35rem · tablet/laptop 35–80rem · desktop > 80rem
         text-align: center;
     }
 
-    [data-contents="intro"] > *,
+    [data-contents="dialog"] > *,
     [data-contents="products"] > [data-contents="product"] {
         grid-column: 1 / -1;
         margin-top: 0;
