@@ -433,7 +433,7 @@ Manifesto
     font-weight: 300;
     font-size: clamp(var(--fs-2), 3.2vw, var(--fs-4));
     line-height: 1.25;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     text-indent: var(--indent-text);
 }
 
