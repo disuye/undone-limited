@@ -106,6 +106,8 @@ Tokens
     --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     --icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E");
     --icon-cart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M4 8h16l-1 13H5z'/%3E%3Cpath d='M9 8V6a3 3 0 0 1 6 0v2'/%3E%3C/svg%3E");
+    --icon-more: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='5' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='12' cy='19' r='2'/%3E%3C/svg%3E");
+    --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M5 5 19 19M19 5 5 19'/%3E%3C/svg%3E");
 }
 
 @media (width < 35rem) {
@@ -294,6 +296,53 @@ Navigation
 
 [data-contents="icon-search"] { --glyph: var(--icon-search); }
 [data-contents="icon-cart"]   { --glyph: var(--icon-cart); }
+
+/* Popover icon menu */
+[data-contents="icon-more"] {
+    --glyph: var(--icon-more);
+    padding: 0;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+}
+
+[data-contents="nav"]:has(:popover-open) [data-contents="icon-more"] {
+    --glyph: var(--icon-close);
+}
+
+[data-contents="nav-menu"] {
+    position: fixed;
+    inset: var(--nav-h) calc(var(--gutter) / 2) auto auto;
+    width: calc(var(--icon) + var(--gutter));
+    margin: 0;
+    padding: calc(var(--gutter) / 2) 0;
+    border: 0;
+    background-color: var(--c-ink);
+    color: var(--c-paper);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gutter);
+    opacity: 0;
+    transition:
+        opacity var(--t-slow) ease-in-out,
+        display var(--t-slow) allow-discrete,
+        overlay var(--t-slow) allow-discrete;
+}
+
+[data-contents="nav-menu"]:popover-open {
+    display: flex;
+    opacity: 1;
+}
+
+[data-contents="nav-menu"] > * {
+    flex-shrink: 0;
+}
+
+@starting-style {
+    [data-contents="nav-menu"]:popover-open {
+        opacity: 0;
+    }
+}
 
 /* Neon underline links */
 :is([data-contents="nav-links"], [data-contents="footer-links"]) a {
