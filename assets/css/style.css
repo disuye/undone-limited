@@ -13,13 +13,6 @@ Fonts (self-hosted, SIL Open Font License)
 }
 
 @font-face {
-    font-family: "Familjen Grotesk";
-    src: url("../fonts/FamiljenGrotesk-Variable-latin.woff2") format("woff2");
-    font-weight: 400 700;
-    font-display: swap;
-}
-
-@font-face {
     font-family: "Schibsted Grotesk";
     src: url("../fonts/SchibstedGrotesk-Variable-latin.woff2") format("woff2");
     font-weight: 400 900;
@@ -179,7 +172,7 @@ body::before {
     inset: 0;
     z-index: -10;
     background-color: var(--smoke);
-    mask: url("../../assets/img/logo4.svg") no-repeat;
+    mask: url("../../assets/img/logo5.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 30%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
     transform: rotate(180deg);
@@ -205,7 +198,7 @@ main::before {
     inset: 0;
     z-index: -1;
     background-color: var(--smoke);
-    mask: url("../../assets/img/logo4.svg") no-repeat;
+    mask: url("../../assets/img/logo5.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 50%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
     transition:
@@ -336,11 +329,10 @@ Hero
     min-height: var(--vh-static, 100svh);
     display: grid;
     align-content: end;
-    padding: var(--nav-h) var(--gutter) var(--gutter);
+    padding: var(--gutter);
     background-color: var(--c-ink);
     color: var(--c-paper);
     overflow: hidden;
-    margin-bottom: var(--sp-6);
 }
 
 [data-contents="hero-image"] {
@@ -430,7 +422,7 @@ Manifesto
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: var(--sp-5) var(--gutter);
-    padding: var(--sp-6) var(--gutter);
+    padding: var(--gutter);
 }
 
 [data-contents="label"] {
@@ -481,6 +473,7 @@ Category divider
     padding-block: var(--sp-1);
     background-color: var(--c-neon);
     overflow: hidden;
+    margin: var(--sp-5) 0;
 }
 
 [data-contents="divider"] h2 {
@@ -506,7 +499,7 @@ Product grid
     grid-template-columns: repeat(12, 1fr);
     align-items: start;
     gap: var(--sp-5) var(--gutter);
-    padding: var(--sp-5) var(--gutter) var(--sp-6);
+    padding: var(--gutter);
 }
 
 [data-contents="product"]:nth-child(4n + 1) { grid-column: 1 / span 7; --aspect: 4 / 5; }
