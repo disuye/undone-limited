@@ -175,7 +175,7 @@ body::before {
     inset: 0;
     z-index: -10;
     background-color: var(--smoke);
-    mask: url("../../assets/img/logo5.svg") no-repeat;
+    mask: url("../../assets/img/undone-text-logo.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 30%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
     transform: rotate(180deg);
@@ -201,7 +201,7 @@ main::before {
     inset: 0;
     z-index: -1;
     background-color: var(--smoke);
-    mask: url("../../assets/img/logo5.svg") no-repeat;
+    mask: url("../../assets/img/undone-text-logo.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 50%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
     transition:
@@ -270,7 +270,7 @@ Navigation
     height: var(--fs-1);
     aspect-ratio: 441 / 102;
     background-color: currentColor;
-    mask: url("../img/logo5.svg") left center / contain no-repeat;
+    mask: url("../img/undone-text-logo.svg") left center / contain no-repeat;
 }
 
 [data-contents="nav-links"] {
@@ -516,7 +516,7 @@ Manifesto
     aspect-ratio: 441 / 102;
     margin: 0;
     background-color: currentColor;
-    mask: url("../img/logo5.svg") center / contain no-repeat;
+    mask: url("../img/undone-text-logo.svg") center / contain no-repeat;
 }
 
 /*==============================
@@ -715,7 +715,7 @@ Footer
     width: 100%;
     aspect-ratio: 441 / 102;
     background-color: var(--c-neon);
-    mask: url("../img/logo5.svg") center / contain no-repeat;
+    mask: url("../img/undone-text-logo.svg") center / contain no-repeat;
 }
 
 [data-contents="copyright"] {
