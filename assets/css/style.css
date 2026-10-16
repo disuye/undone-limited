@@ -499,7 +499,7 @@ Product grid
     grid-template-columns: repeat(12, 1fr);
     align-items: start;
     gap: var(--sp-5) var(--gutter);
-    padding: var(--gutter);
+    padding: 0 var(--gutter);
 }
 
 [data-contents="product"]:nth-child(4n + 1) { grid-column: 1 / span 7; --aspect: 4 / 5; }
@@ -683,6 +683,10 @@ Breakpoints: mobile < 35rem · tablet/laptop 35–80rem · desktop > 80rem
 ===============================*/
 
 @media (width < 35rem) {
+    [data-contents="brand"] {
+        height: var(--fs-0);
+    }
+
     [data-contents="nav-links"] {
         gap: var(--sp-3);
     }
