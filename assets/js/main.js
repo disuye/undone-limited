@@ -70,6 +70,13 @@ const showHongKongTime = (el) => {
   setInterval(tick, 1000);
 };
 
+const closeMenuOnNavigate = (menu) => {
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) menu.hidePopover();
+  });
+};
+
+document.querySelectorAll('[data-contents="nav-menu"]').forEach(closeMenuOnNavigate);
 document.querySelectorAll('[data-contents="hk-time"]').forEach(showHongKongTime);
 document.querySelectorAll('a[data-u][data-d]').forEach(revealMailto);
 document.querySelectorAll('[data-contents="split-headline"]').forEach(fitHeadline);

@@ -40,23 +40,20 @@
 		<header data-contents="nav">
 			<a data-contents="brand" href="#" aria-label="Undone Limited — home"></a>
 			<div data-contents="nav-links" role="navigation" aria-label="Primary">
+				<a href="#about">About</a>
 				<a href="#featured">Featured</a>
-				<a href="#intro">About</a>
 			</div>
 			<div data-contents="nav-icons">
 				<button data-contents="icon-more" popovertarget="nav-menu" aria-label="Menu"></button>
 				<div data-contents="nav-menu" id="nav-menu" popover>
 					<a data-contents="icon-search" href="#" aria-label="Search"></a>
+					<a data-contents="icon-home" href="#" aria-label="Home"></a>
+					<a data-contents="icon-about" href="#about" aria-label="About"></a>
+					<a data-contents="icon-featured" href="#featured" aria-label="Featured"></a>
+					<a data-contents="icon-contact" href="#contact" aria-label="Contact"></a>
 					<a data-contents="icon-cart" href="#" aria-label="Cart"></a>
-
-					<a data-contents="icon-search" href="#" aria-label="Search"></a>
-					<a data-contents="icon-cart" href="#" aria-label="Cart"></a>
-
-					<a data-contents="icon-search" href="#" aria-label="Search"></a>
-					<a data-contents="icon-cart" href="#" aria-label="Cart"></a>
-
-					<a data-contents="icon-search" href="#" aria-label="Search"></a>
-					<a data-contents="icon-cart" href="#" aria-label="Cart"></a>
+					<div data-contents="icon-ruler" aria-hidden="true"></div>
+					<a data-contents="icon-login" href="#" aria-label="Login"></a>
 				</div>
 			</div>
 		</header>
@@ -69,15 +66,15 @@
 				</figure>
 				<div data-contents="hero-content">
 					<div data-contents="split-headline" role="heading" aria-level="1">
-						<div>Come</div>
 						<div>Undone</div>
+						<div>Limited</div>
 					</div>
 					<div data-contents="hero-bar">
 						<div data-contents="hero-meta">
 							<p>Research & Development</p>
 							<p data-contents="hk-time" aria-live="off"></p>
 						</div>
-						<a data-contents="cta" href="#featured">Yes</a>
+						<a data-contents="cta" href="#featured">···</a>
 					</div>
 				</div>
 			</header>
@@ -137,23 +134,31 @@
 				</article>
 			</div>
 <!------------------------>
-			<div data-contents="divider"  id="intro">
+			<div data-contents="divider" id="about">
 				<h2>About</h2>
 			</div>
 			<article data-contents="dialog">
-					<h2 data-contents="label">Unstore</h2>
-					<div data-contents="statement">
-						<p>Official reissues + modern collabs × sub-culture icons and artists:</p>
-						<p data-contents="highlight">Yumla, Midnight &amp; Co, Disuye Records, Fukuoka Agency, Cartel &hellip; </p
-						><p>Heritage, contemporary and more.</p>
-					</div>
-					<h2 data-contents="label">Undone Limited</h2>
-					<div data-contents="statement">
-						<p>Hong Kong based 
-							<i data-contents="undone-text-logo" role="img" aria-label="Undone"></i> provides brand research and creative development services, since 2003.</p>
-						<p data-contents="highlight">Concepts thru execution, merchandising, audio/visual, identity, interactive &amp; subliminal media production.</p>
-						<p></p>
-					</div>	 
+				<!-- <h2 data-contents="label"></h2> -->
+				<div data-contents="statement">
+					<p>We provide research and development services to various industries. Established Hong Kong, 2003.</p>
+				</div>	 
+				<!-- <h2 data-contents="label" >Contact</h2> -->
+				<div data-contents="statement">
+					<p>Contact us to discuss solutions.</p>
+					<form data-contents="contact" action="#" method="post" id="contact">
+						<div data-contents="field">
+							<input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name" required>
+						</div>
+						<div data-contents="field">
+							<input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+						</div>
+						<div data-contents="field">
+							<textarea name="message" rows="3" placeholder="Message" aria-label="Message" required></textarea>
+							<button type="submit">Send</button>
+						</div>
+					</form>		
+				</div>
+
 			</article>
 <!------------------------>
 			<canvas data-contents="crt" aria-hidden="true"></canvas>
@@ -161,39 +166,34 @@
 
 		<footer data-contents="footer">
 			<div data-contents="large-logo" aria-hidden="true"></div>
+			<div>
+				<h4>Info</h4>
+				<div data-contents="footer-links">
+					<a href="#about">About</a>
+					<a href="#" data-u="info" data-d="undoneltd.com">Email</a>
+					<a href="#">Privacy</a>
+					<a href="#">Terms</a>
+					<a href="#">Login</a>
+				</div>
+			</div>
+			<div>
+				<h4>Links</h4>
+				<div data-contents="footer-links">
+					<a href="#" aria-label="Search">Search</a>
+					<a href="#" aria-label="Home">Home</a>
+					<a href="#about" aria-label="About">About</a>
+					<a href="#featured" aria-label="Featured">Featured</a>
+					<a href="#contact" aria-label="Contact">Contact</a>
+					<a href="#" aria-label="Cart">Cart</a>
+				</div>
+			</div>
 			<form data-contents="newsletter" action="#" method="post">
-				<h4>Keep me in the loop</h4>
+				<h4>Investor Prospectus</h4>
 				<div data-contents="field">
 					<input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
 					<button type="submit">Send</button>
 				</div>
 			</form>
-			
-			<div>
-				<h4>Unstore</h4>
-				<div data-contents="footer-links">
-					<a href="#featured">Latest</a>
-					<a href="#">Classics</a>
-					<a href="#">Everything</a>
-				</div>
-			</div>
-			<div>
-				<h4>Uninformed</h4>
-				<div data-contents="footer-links">
-					<a href="#intro">About</a>
-					<a href="#" data-u="info" data-d="undoneltd.com">Contact</a>
-					<a href="#">Login</a>
-				</div>
-			</div>
-			<div>
-				<h4>Legal</h4>
-				<div data-contents="footer-links">
-					<a href="#">Privacy</a>
-					<a href="#">Terms</a>
-					<a href="#">Contact</a>
-				</div>
-			</div>
-
 			<div data-contents="copyright">
 				<p>©2026 Undone Ltd · Hong Kong</p><p>混亂 · 香港</p>
 			</div>

@@ -34,20 +34,20 @@ Tokens
 
 :root {
     /* Palette */
-    --paper-rgb: 247 254 255;   /* #F7FEFF -  rgb(247 254 255) */
     --ink-rgb: 27 14 13;        /* #1B0E0D - rgb(27 14 13) */
-    --accent-rgb: 76 106 11;     /* #4C6A0B  - rgb(76 106 11)*/
+    --paper-rgb: 247 254 255;   /* #F7FEFF -  rgb(247 254 255) */
     --neon-rgb: 253 253 13;     /* #FDFD0D - rgb(253 253 13) */
-    --deep-rgb: 66 72 52;       /* #424834  - rgb(66 72 52)*/
     --rule-rgb: 174 227 18;    /* #AEE312 - rgb(174 227 18) */
-
+    --accent-rgb: 76 106 11;     /* #4C6A0B  - rgb(76 106 11)*/
+    --deep-rgb: 66 72 52;       /* #424834  - rgb(66 72 52)*/
+    
     --c-paper: rgb(var(--paper-rgb));
     --c-ink: rgb(var(--ink-rgb));
     --c-accent: rgb(var(--accent-rgb));
     --c-neon: rgb(var(--neon-rgb));
     --c-deep: rgb(var(--deep-rgb));
-    --c-muted: rgb(var(--paper-rgb) / 0.5);
-    --smoke: rgb(var(--deep-rgb) / 0.2);
+    --c-smoke: rgba(var(--deep-rgb) / 0.2);
+    --c-shadow: rgba(var(--ink-rgb) / 0.1);
 
     /* Scale: everything derives from these two */
     --unit: 1rem;
@@ -77,6 +77,8 @@ Tokens
     --gutter: var(--sp-4);
     --nav-h: var(--sp-5);
     --icon: calc(var(--unit) * 1.5);
+    --hit: max(0px, calc((2.75rem - var(--icon)) / 2));
+    --menu-w: max(calc(var(--icon) + var(--gutter)), calc(var(--icon) + 2 * var(--hit)));
     --rule: calc(var(--unit) / 16);
     --underline: calc(var(--rule) * 2);
 
@@ -108,6 +110,12 @@ Tokens
     --icon-cart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M4 8h16l-1 13H5z'/%3E%3Cpath d='M9 8V6a3 3 0 0 1 6 0v2'/%3E%3C/svg%3E");
     --icon-more: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='5' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='12' cy='19' r='2'/%3E%3C/svg%3E");
     --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M5 5 19 19M19 5 5 19'/%3E%3C/svg%3E");
+    --icon-home: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M3 11 12 3l9 8'/%3E%3Cpath d='M5 9.5V21h14V9.5'/%3E%3Cpath d='M10 21v-6h4v6'/%3E%3C/svg%3E");
+    --icon-about: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+    --icon-featured: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M12 21 3.8 12.7a5 5 0 0 1 7.1-7.1L12 6.7l1.1-1.1a5 5 0 0 1 7.1 7.1z'/%3E%3C/svg%3E");
+    --icon-contact: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M22 2 2 9.5l8 3.5 3.5 8z'/%3E%3Cpath d='M22 2 10 13'/%3E%3C/svg%3E");
+    --icon-login: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M14 3h7v18h-7'/%3E%3Cpath d='M3 12h12'/%3E%3Cpath d='M11 8l4 4-4 4'/%3E%3C/svg%3E");
+    --icon-ruler: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M3 12h18'/%3E%3C/svg%3E");
 }
 
 @media (width < 35rem) {
@@ -174,7 +182,7 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -10;
-    background-color: var(--smoke);
+    background-color: var(--c-smoke);
     mask: url("../../assets/img/undone-text-logo.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 30%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
@@ -200,7 +208,7 @@ main::before {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-color: var(--smoke);
+    background-color: var(--c-smoke);
     mask: url("../../assets/img/undone-text-logo.svg") no-repeat;
     mask-size: auto calc(var(--bg-zoom, 3) * 50%);
     mask-position: var(--bg-x, 50%) var(--bg-y, 50%);
@@ -284,25 +292,42 @@ Navigation
 
 [data-contents="nav-icons"] {
     justify-self: end;
+    margin-right: calc(-1 * var(--hit));
     display: flex;
     gap: var(--sp-3);
 }
 
 [data-contents^="icon-"] {
+    position: relative;
+    box-sizing: content-box;
     width: var(--icon);
     height: var(--icon);
+    padding: var(--hit);
+}
+
+[data-contents^="icon-"]::after {
+    content: "";
+    position: absolute;
+    inset: var(--hit);
     background-color: currentColor;
     mask: var(--glyph) center / contain no-repeat;
+    transition: scale var(--t-fast) var(--ease-out);
 }
 
 [data-contents="icon-search"] { --glyph: var(--icon-search); }
 [data-contents="icon-cart"]   { --glyph: var(--icon-cart); }
+[data-contents="icon-home"]     { --glyph: var(--icon-home); }
+[data-contents="icon-about"]    { --glyph: var(--icon-about); }
+[data-contents="icon-featured"] { --glyph: var(--icon-featured); }
+[data-contents="icon-contact"]  { --glyph: var(--icon-contact); }
+[data-contents="icon-login"]    { --glyph: var(--icon-login); }
+[data-contents="icon-ruler"]    { --glyph: var(--icon-ruler); }
 
 /* Popover icon menu */
 [data-contents="icon-more"] {
     --glyph: var(--icon-more);
-    padding: 0;
     border: 0;
+    background: none;
     color: inherit;
     cursor: pointer;
 }
@@ -313,21 +338,22 @@ Navigation
 
 [data-contents="nav-menu"] {
     position: fixed;
-    inset: var(--nav-h) calc(var(--gutter) / 2) auto auto;
-    width: calc(var(--icon) + var(--gutter));
+    inset: var(--nav-h) calc(var(--gutter) + var(--icon) / 2 - var(--menu-w) / 2) auto auto;
+    width: var(--menu-w);
     margin: 0;
-    padding: calc(var(--gutter) / 2) 0;
+    padding: max(0px, calc(var(--gutter) / 2 - var(--hit))) 0;
     border: 0;
+    overflow: visible;
     background-color: var(--c-ink);
     color: var(--c-paper);
     flex-direction: column;
     align-items: center;
-    gap: var(--gutter);
+    gap: max(0px, calc(var(--gutter) - 2 * var(--hit)));
     opacity: 0;
     transition:
-        opacity var(--t-slow) ease-in-out,
-        display var(--t-slow) allow-discrete,
-        overlay var(--t-slow) allow-discrete;
+        opacity var(--t-fast) ease-in-out,
+        display var(--t-fast) allow-discrete,
+        overlay var(--t-fast) allow-discrete;
 }
 
 [data-contents="nav-menu"]:popover-open {
@@ -337,12 +363,39 @@ Navigation
 
 [data-contents="nav-menu"] > * {
     flex-shrink: 0;
-    transition: background-color var(--t-fast) var(--ease-out);
+    transition: color var(--t-fast) var(--ease-out);
 }
 
-[data-contents="nav-menu"] > :is(:hover, :focus-visible) {
-    background-color: var(--c-neon);
+[data-contents="nav-menu"] > a:is(:hover, :focus-visible) {
+    color: var(--c-neon);
+}
+
+[data-contents="nav-menu"] > a:is(:hover, :focus-visible)::after {
     scale: 1.05;
+}
+/* Hover labels, text from each link's aria-label */
+[data-contents="nav-menu"] > [aria-label]::before {
+    content: attr(aria-label);
+    position: absolute;
+    top: 50%;
+    right: calc(100% + (var(--menu-w) - var(--icon)) / 2 - var(--hit));
+    translate: 0 -50%;
+    padding: var(--sp-1) var(--sp-2);
+    background-color: var(--c-neon);
+    color: var(--c-ink);
+    font-size: var(--fs--1);
+    font-weight: 500;
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--t-fast) ease-in-out;
+    box-shadow: 0 0 0.4rem var(--c-shadow);
+}
+
+[data-contents="nav-menu"] > :is(:hover, :focus-visible)::before {
+    opacity: 1;
 }
 
 @starting-style {
@@ -499,7 +552,7 @@ Manifesto
     font-size: clamp(var(--fs-2), 3.2vw, var(--fs-4));
     line-height: 1.25;
     /*text-transform: uppercase;*/
-    text-indent: var(--indent-text);
+    /* text-indent: var(--indent-text); */
 }
 
 [data-contents="statement"] > p {
@@ -666,19 +719,32 @@ Footer
     color: var(--c-paper);
 }
 
+[data-contents="contact"] {
+    --field-focus: var(--c-accent);
+    --field-hover-bg: var(--c-ink);
+    --field-hover-fg: var(--c-paper);
+    display: grid;
+    gap: var(--sp-3);
+    margin-top: var(--sp-4);
+    font-family: var(--font-body);
+    font-size: var(--fs-0);
+    line-height: var(--lh-body);
+    text-indent: 0;
+}
+
 [data-contents="field"] {
     display: flex;
     align-items: end;
     gap: var(--sp-2);
-    border-bottom: var(--rule) solid var(--c-paper);
+    border-bottom: var(--rule) solid currentColor;
     transition: border-color var(--t-fast) var(--ease-out);
 }
 
 [data-contents="field"]:focus-within {
-    border-color: var(--c-neon);
+    border-color: var(--field-focus, var(--c-neon));
 }
 
-[data-contents="field"] input {
+[data-contents="field"] :is(input, textarea) {
     flex: 1;
     min-width: 0;
     padding-block: var(--sp-2);
@@ -688,8 +754,14 @@ Footer
     outline: none;
 }
 
-[data-contents="field"] input::placeholder {
-    color: var(--c-muted);
+[data-contents="field"] textarea {
+    resize: vertical;
+    min-height: var(--sp-5);
+}
+
+[data-contents="field"] ::placeholder {
+    color: inherit;
+    opacity: 0.5;
 }
 
 [data-contents="field"] button {
@@ -703,11 +775,14 @@ Footer
     letter-spacing: var(--track-open);
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color var(--t-fast) var(--ease-out);
+    transition:
+        background-color var(--t-fast) var(--ease-out),
+        color var(--t-fast) var(--ease-out);
 }
 
 [data-contents="field"] button:is(:hover, :focus-visible) {
-    background-color: var(--c-paper);
+    background-color: var(--field-hover-bg, var(--c-paper));
+    color: var(--field-hover-fg, var(--c-ink));
 }
 
 [data-contents="large-logo"] {
