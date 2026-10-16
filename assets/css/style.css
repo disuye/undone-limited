@@ -139,6 +139,7 @@ html {
     line-height: var(--lh-body);
     text-rendering: optimizeLegibility;
     scroll-padding-top: var(--nav-h);
+    scroll-behavior: smooth;
 }
 
 body {
@@ -767,6 +768,10 @@ Breakpoints: mobile < 35rem · tablet/laptop 35–80rem · desktop > 80rem
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     *, *::before, *::after {
         transition-duration: 0ms !important;
     }
