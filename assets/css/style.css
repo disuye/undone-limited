@@ -337,6 +337,12 @@ Navigation
 
 [data-contents="nav-menu"] > * {
     flex-shrink: 0;
+    transition: background-color var(--t-fast) var(--ease-out);
+}
+
+[data-contents="nav-menu"] > :is(:hover, :focus-visible) {
+    background-color: var(--c-neon);
+    scale: 1.05;
 }
 
 @starting-style {
@@ -656,7 +662,7 @@ Footer
 
 [data-contents="newsletter"] {
     padding: var(--sp-4);
-    background-color: var(--c-accent);
+    background-color: var(--c-ink);
     color: var(--c-paper);
 }
 
