@@ -83,10 +83,11 @@ Tokens
     --underline: calc(var(--rule) * 2);
 
     /* Typography */
-    --font-body: "Inter", "Helvetica Neue", sans-serif;
-    --font-display: "Schibsted Grotesk", "Helvetica Neue", sans-serif;
-    --font-statement: "Bricolage Grotesque", "Helvetica Neue", sans-serif;
-    --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+    --font-cjk: "PingFang HK", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", "Microsoft JhengHei";
+    --font-body: "Inter", "Helvetica Neue", var(--font-cjk), sans-serif;
+    --font-display: "Schibsted Grotesk", "Helvetica Neue", var(--font-cjk), sans-serif;
+    --font-statement: "Bricolage Grotesque", "Helvetica Neue", var(--font-cjk), sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, var(--font-cjk), monospace;
     --lh-split: 0.75;
     --lh-display: 0.85;
     --lh-body: 1.5;
@@ -103,8 +104,8 @@ Tokens
 
     /* Texture & imagery */
     --img-filter: grayscale(1) contrast(1.35);
-    --noise-opacity: 0.17;
-    --crt-opacity: 0.17;
+    --noise-opacity: 0.7;
+    --crt-opacity: 0.07;
     --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     --icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E");
     --icon-cart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M4 8h16l-1 13H5z'/%3E%3Cpath d='M9 8V6a3 3 0 0 1 6 0v2'/%3E%3C/svg%3E");
@@ -225,7 +226,7 @@ main::before {
     width: calc(100lvw * (1 + 2 * var(--crt-overscan) / 100));
     height: calc(var(--vh-lock, 100lvh) * (1 + 2 * var(--crt-overscan) / 100));
     max-width: none;
-    z-index: 100;
+    z-index: 10;
     pointer-events: none;
     opacity: var(--crt-opacity);
     mix-blend-mode: color-dodge;
@@ -241,17 +242,17 @@ Texture overlay
 
 ===============================*/
 
-/* [data-contents="noise"] {
+[data-contents="noise"] {
     position: fixed;
     inset: 0;
     width: 100lvw;
     height: var(--vh-lock, 100lvh);
-    z-index: 50;
+    z-index: 20;
     pointer-events: none;
     opacity: var(--noise-opacity);
     mix-blend-mode: multiply;
     background-image: var(--noise);
-} */
+}
 
 /*==============================
 
@@ -262,14 +263,13 @@ Navigation
 [data-contents="nav"] {
     position: fixed;
     inset: 0 0 auto;
-    z-index: 40;
+    z-index: 8;
     height: var(--nav-h);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding-inline: var(--gutter);
     color: var(--c-paper);
-    /* mix-blend-mode: difference; */
     background-color: var(--c-ink);
 }
 
@@ -546,17 +546,31 @@ Manifesto
 }
 
 [data-contents="statement"] {
+    display: grid;
+    gap: 0.75em;
     grid-column: 5 / -1;
     font-family: var(--font-statement);
     font-weight: 300;
-    font-size: clamp(var(--fs-2), 3.2vw, var(--fs-4));
+    font-size: clamp(var(--fs-1), 3.2vw, var(--fs-3));
     line-height: 1.25;
-    /*text-transform: uppercase;*/
     /* text-indent: var(--indent-text); */
 }
 
-[data-contents="statement"] > p {
-    display: inline;
+[data-contents="statement"] :is([lang|="zh"], [lang|="ja"], [lang|="ko"]) {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 80%;
+}
+
+b {
+    letter-spacing: -0.1rem;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-weight: 900;
+}
+
+i {
+    font-style: normal;    
 }
 
 [data-contents="highlight"] {
