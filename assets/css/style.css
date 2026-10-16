@@ -5,9 +5,24 @@ Fonts (self-hosted, SIL Open Font License)
 ===============================*/
 
 @font-face {
-    font-family: "Rubik";
-    src: url("../fonts/Rubik-Variable-latin.woff2") format("woff2");
-    font-weight: 300 900;
+    font-family: "Bricolage Grotesque";
+    src: url("../fonts/BricolageGrotesque-Variable-latin.woff2") format("woff2");
+    font-weight: 200 800;
+    font-stretch: 75% 100%;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Familjen Grotesk";
+    src: url("../fonts/FamiljenGrotesk-Variable-latin.woff2") format("woff2");
+    font-weight: 400 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Schibsted Grotesk";
+    src: url("../fonts/SchibstedGrotesk-Variable-latin.woff2") format("woff2");
+    font-weight: 400 900;
     font-display: swap;
 }
 
@@ -64,7 +79,7 @@ Tokens
     --fs-hero: 13.5vw;
     --fs-divider: 12vw;
     --indent-hero: 20vw;
-    --indent-text: calc(var(--unit) * 2);
+    --indent-text: calc(var(--unit) * 3);
 
     --gutter: var(--sp-4);
     --nav-h: var(--sp-5);
@@ -73,15 +88,16 @@ Tokens
     --underline: calc(var(--rule) * 2);
 
     /* Typography */
-    --font-display: "Rubik", "Helvetica Neue", sans-serif;
     --font-body: "Inter", "Helvetica Neue", sans-serif;
+    --font-display: "Schibsted Grotesk", "Helvetica Neue", sans-serif;
+    --font-statement: "Bricolage Grotesque", "Helvetica Neue", sans-serif;
     --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
     --lh-split: 0.75;
     --lh-display: 0.85;
     --lh-body: 1.5;
-    --track-split: -0.05em;
-    --track-display: -0.05em;
-    --track-wide: 0.1em;
+    --track-tight: -0.05em;
+    --track-open: 0.03em;
+    --track-wide: 0.3em;
 
     /* Motion */
     --t-fast: 150ms;
@@ -221,7 +237,7 @@ Texture overlay
 
 ===============================*/
 
-[data-contents="noise"] {
+/* [data-contents="noise"] {
     position: fixed;
     inset: 0;
     width: 100lvw;
@@ -231,7 +247,7 @@ Texture overlay
     opacity: var(--noise-opacity);
     mix-blend-mode: multiply;
     background-image: var(--noise);
-}
+} */
 
 /*==============================
 
@@ -249,7 +265,8 @@ Navigation
     align-items: center;
     padding-inline: var(--gutter);
     color: var(--c-paper);
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
+    background-color: var(--c-ink);
 }
 
 [data-contents="brand"] {
@@ -345,10 +362,10 @@ Hero
 
 [data-contents="split-headline"] {
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 900;
     font-size: calc(var(--fs-hero) * var(--fit, 1));
     line-height: var(--lh-split);
-    letter-spacing: var(--track-split);
+    letter-spacing: var(--track-tight);
     text-transform: uppercase;
     white-space: nowrap;
 }
@@ -391,7 +408,7 @@ Hero
     font-weight: 700;
     font-size: var(--fs-3);
     line-height: 1;
-    letter-spacing: var(--track-display);
+    letter-spacing: var(--track-open);
     text-transform: uppercase;
     transition:
         background-color var(--t-fast) var(--ease-out),
@@ -429,7 +446,7 @@ Manifesto
 
 [data-contents="statement"] {
     grid-column: 5 / -1;
-    font-family: var(--font-display);
+    font-family: var(--font-statement);
     font-weight: 300;
     font-size: clamp(var(--fs-2), 3.2vw, var(--fs-4));
     line-height: 1.25;
@@ -473,7 +490,7 @@ Category divider
     font-weight: 900;
     font-size: var(--fs-divider);
     line-height: var(--lh-display);
-    letter-spacing: var(--track-display);
+    letter-spacing: var(--track-tight);
     text-transform: uppercase;
     white-space: nowrap;
 }
@@ -634,7 +651,7 @@ Footer
     color: var(--c-ink);
     font-size: var(--fs--1);
     font-weight: 700;
-    letter-spacing: var(--track-wide);
+    letter-spacing: var(--track-open);
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color var(--t-fast) var(--ease-out);

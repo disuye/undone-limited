@@ -56,6 +56,21 @@ const fitHeadline = (headline) => {
   document.fonts.ready.then(apply);
 };
 
+const showHongKongTime = (el) => {
+  const format = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Hong_Kong',
+    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+  });
+  const tick = () => {
+    const p = Object.fromEntries(format.formatToParts(new Date()).map(({ type, value }) => [type, value]));
+    el.textContent = `HKT ${p.weekday}, ${p.day} ${p.month} ${p.year}, ${p.hour}:${p.minute}:${p.second}`;
+  };
+  tick();
+  setInterval(tick, 1000);
+};
+
+document.querySelectorAll('[data-contents="hk-time"]').forEach(showHongKongTime);
 document.querySelectorAll('a[data-u][data-d]').forEach(revealMailto);
 document.querySelectorAll('[data-contents="split-headline"]').forEach(fitHeadline);
 lockViewportHeight();
