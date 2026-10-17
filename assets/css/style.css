@@ -736,7 +736,7 @@ Footer
 
 [data-contents="footer"] {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--sp-5) var(--gutter);
     padding: var(--sp-6) var(--gutter) var(--sp-3);
     padding-bottom: max(var(--sp-3), env(safe-area-inset-bottom));
@@ -881,13 +881,13 @@ Breakpoints: mobile < 35rem · tablet/laptop 35–80rem · desktop > 80rem
     }
 
     [data-contents="footer"] {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (35rem <= width <= 80rem) {
     [data-contents="footer"] {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
