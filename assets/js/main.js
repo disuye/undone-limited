@@ -4,6 +4,28 @@ const revealMailto = (link) => {
     link.addEventListener(type, set, { once: true, passive: true }));
 };
 
+const copyEmail = (link) => {
+  const label = link.textContent;
+  const address = `${link.dataset.u}@${link.dataset.d}`;
+  let timer;
+
+  const flash = (text) => {
+    link.textContent = text;
+    clearTimeout(timer);
+    timer = setTimeout(() => { link.textContent = label; }, 1500);
+  };
+
+  link.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText(address);
+      flash('Copied');
+    } catch {
+      location.href = `mailto:${address}`;
+    }
+  });
+};
+
 const lockViewportHeight = () => {
   const root = document.documentElement.style;
   const portrait = matchMedia('(orientation: portrait)');
@@ -78,6 +100,7 @@ const closeMenuOnNavigate = (menu) => {
 
 document.querySelectorAll('[data-contents="nav-menu"]').forEach(closeMenuOnNavigate);
 document.querySelectorAll('[data-contents="hk-time"]').forEach(showHongKongTime);
-document.querySelectorAll('a[data-u][data-d]').forEach(revealMailto);
+document.querySelectorAll('a[data-u][data-d]:not([data-copy])').forEach(revealMailto);
+document.querySelectorAll('a[data-u][data-d][data-copy]').forEach(copyEmail);
 document.querySelectorAll('[data-contents="split-headline"]').forEach(fitHeadline);
 lockViewportHeight();
