@@ -117,6 +117,10 @@ Tokens
     --icon-contact: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M22 2 2 9.5l8 3.5 3.5 8z'/%3E%3Cpath d='M22 2 10 13'/%3E%3C/svg%3E");
     --icon-login: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M14 3h7v18h-7'/%3E%3Cpath d='M3 12h12'/%3E%3Cpath d='M11 8l4 4-4 4'/%3E%3C/svg%3E");
     --icon-ruler: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M3 12h18'/%3E%3C/svg%3E");
+    --icon-experimental: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M8 3h8'/%3E%3Cpath d='M10 3v6L4 21h16L14 9V3'/%3E%3Cpath d='M7 15h10' stroke-linecap='butt'/%3E%3C/svg%3E");
+    --icon-iterative: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M2 12H5L11 6H12L15 3H22M2 12H5L11 6H12L15 9H22M2 12H5L11 18H12L15 15H22M2 12H5L11 18H12L15 21H22'/%3E%3C/svg%3E");
+    --icon-data: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Ccircle cx='2.5' cy='3' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='7.25' cy='3' r='1.25' stroke-width='1.5'/%3E%3Cpath d='M12 0.75v4.5' stroke-linecap='butt'/%3E%3Ccircle cx='16.75' cy='3' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='21.5' cy='3' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='2.5' cy='9' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='7.25' cy='9' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='12' cy='9' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='16.75' cy='9' r='1.25' stroke-width='1.5'/%3E%3Cpath d='M21.5 6.75v4.5' stroke-linecap='butt'/%3E%3Cpath d='M2.5 12.75v4.5' stroke-linecap='butt'/%3E%3Ccircle cx='7.25' cy='15' r='1.25' stroke-width='1.5'/%3E%3Cpath d='M12 12.75v4.5' stroke-linecap='butt'/%3E%3Ccircle cx='16.75' cy='15' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='21.5' cy='15' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='2.5' cy='21' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='7.25' cy='21' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='12' cy='21' r='1.25' stroke-width='1.5'/%3E%3Ccircle cx='16.75' cy='21' r='1.25' stroke-width='1.5'/%3E%3Cpath d='M21.5 18.75v4.5' stroke-linecap='butt'/%3E%3C/svg%3E");
+    --icon-testing: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M11.1 2.0 13.3 7.7 16.6 5.9 16.9 9.1 22.1 9.8 17.5 13.0 18.8 15.7 15.5 16.0 16.0 21.1 12.5 18.5 9.8 20.7 8.8 17.0 3.4 18.5 7.2 13.8 4.5 11.8 6.6 10.0 5.3 5.8 9.7 7.5z' stroke-linejoin='miter'/%3E%3C/svg%3E");
 }
 
 @media (width < 35rem) {
@@ -322,6 +326,10 @@ Navigation
 [data-contents="icon-contact"]  { --glyph: var(--icon-contact); }
 [data-contents="icon-login"]    { --glyph: var(--icon-login); }
 [data-contents="icon-ruler"]    { --glyph: var(--icon-ruler); }
+[data-contents="icon-experimental"] { --glyph: var(--icon-experimental); }
+[data-contents="icon-iterative"]    { --glyph: var(--icon-iterative); }
+[data-contents="icon-data"]         { --glyph: var(--icon-data); }
+[data-contents="icon-testing"]      { --glyph: var(--icon-testing); }
 
 /* Popover icon menu */
 [data-contents="icon-more"] {
@@ -678,6 +686,15 @@ Product grid
     font-family: var(--font-mono);
     font-size: var(--fs--1);
     letter-spacing: var(--track-wide);
+}
+
+[data-contents="product-meta"] p:has(> [data-contents^="icon-"]) {
+    align-self: end;
+}
+
+[data-contents="product-meta"] [data-contents^="icon-"] {
+    --hit: 0px;
+    display: block;
 }
 
 [data-contents="product"]:is(:hover, :focus-within) img {
